@@ -42,7 +42,7 @@ jobs:
           path: ${{ env.WORKSPACE }}
       - name: Build
         run: go build -v ./...
-          working-directory: ${{ env.WORKSPACE }}
+        working-directory: ${{ env.WORKSPACE }}
 
 
   test:
