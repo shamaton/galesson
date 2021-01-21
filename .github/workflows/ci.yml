@@ -24,11 +24,6 @@ jobs:
         with:
           go-version: ^1.13
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: ${{ env.WORKSPACE }}
-
       - name: Cache
         uses: actions/cache@v2.1.0
         with:
@@ -37,17 +32,30 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ${{ env.WORKSPACE }}
 
-
-      - name: pwd
-        run: pwd && echo $GOPATH
-
-      - name: run main
-        run: go run main.go
+ #     - name: pwd
+ #       run: pwd && echo $GOPATH
 
       - name: Build
         run: go build -v ./...
+          working-directory: ${{ env.WORKSPACE }}
 
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+          with:
+            path: ${{ env.WORKSPACE }}
       - name: Test
         run: go test -v ./...
 
