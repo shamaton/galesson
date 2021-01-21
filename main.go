@@ -22,4 +22,7 @@ func main() {
 	fmt.Println(vv)
 }
 
+func a() {
+	fmt.Println("a")
+}
 
