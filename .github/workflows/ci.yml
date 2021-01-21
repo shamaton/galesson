@@ -44,6 +44,9 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+    - name: run main
+      run: go run main.go
+
     - name: Build
       run: go build -v ./...
 
