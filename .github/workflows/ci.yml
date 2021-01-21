@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  WORKSPACE: ${{ github.workspace }}/src/github.com/${{ github.repository }}
+defaults:
+  run:
+    working-directory: ${{ env.WORKSPACE }}
+
 jobs:
 
   setup:
@@ -30,7 +36,7 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          path: ${{ github.workspace }}/src/github.com/${{ github.repository }}
+          path: ${{ env.WORKSPACE }}
 
       - name: Cache
         uses: actions/cache@v2.1.0
