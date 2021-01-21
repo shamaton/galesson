@@ -35,14 +35,14 @@ jobs:
   build:
     needs: setup
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           path: ${{ env.WORKSPACE }}
 
- #     - name: pwd
- #       run: pwd && echo $GOPATH
+  #     - name: pwd
+  #       run: pwd && echo $GOPATH
 
       - name: Build
         run: go build -v ./...
@@ -51,7 +51,7 @@ jobs:
   test:
     needs: setup
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
