@@ -58,7 +58,7 @@ jobs:
           fail_ci_if_error: false
 
   lint:
-    needs: setup
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
