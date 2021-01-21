@@ -17,15 +17,23 @@ jobs:
         working-directory: ${{ env.WORKSPACE }}
     runs-on: ubuntu-latest
     steps:
-      - name: set up
+      - name: Setup
         uses: actions/setup-go@v2
         with:
           go-version: ^1.13
 
-      - name: check out
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           path: ${{ env.WORKSPACE }}
+
+      - name: Cache
+        uses: actions/cache@v2.1.0
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Set GOPATH and PATH
         run: |
@@ -38,17 +46,9 @@ jobs:
           echo "GOPROXY=https://proxy.golang.org" >> $GITHUB_ENV
           echo "GO111MODULE=on" >> $GITHUB_ENV
 
-      - name: Cache
-        uses: actions/cache@v2.1.0
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
 
       - name: pwd
-        run: pwd
+        run: pwd && env
 
       - name: run main
         run: go run main.go
