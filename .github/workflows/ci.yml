@@ -48,12 +48,15 @@ jobs:
             ${{ runner.os }}-go-
 
   build:
+    defaults:
+      run:
+        working-directory: ${{ env.WORKSPACE }}
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: pwd
         run: pwd
-        
+
       - name: run main
         run: go run main.go
 
