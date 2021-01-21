@@ -9,11 +9,13 @@ on:
 env:
   GOPATH: ${{ github.workspace }}
   WORKSPACE: ${{ github.workspace }}/src/github.com/${{ github.repository }}
-  GO111MODULE: on
 
 jobs:
 
   test:
+    defaults:
+      run:
+        working-directory: ${{ env.WORKSPACE }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
