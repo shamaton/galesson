@@ -40,13 +40,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ${{ env.WORKSPACE }}
-
-  #     - name: pwd
-  #       run: pwd && echo $GOPATH
-
       - name: Build
         run: go build -v ./...
           working-directory: ${{ env.WORKSPACE }}
+
 
   test:
     needs: setup
