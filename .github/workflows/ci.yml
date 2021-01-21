@@ -19,7 +19,7 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          path: ${{ env.GOPATH }}/src/github.com/${{ github.repository }}
+          path: $GOPATH/src/github.com/${{ github.repository }}
 
       - name: Cache
         uses: actions/cache@v2.1.0
