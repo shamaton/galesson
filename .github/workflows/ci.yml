@@ -8,13 +8,13 @@ on:
 
 env:
   WORKSPACE: ${{ github.workspace }}/src/github.com/${{ github.repository }}
-defaults:
-  run:
-    working-directory: ${{ env.WORKSPACE }}
 
 jobs:
 
   setup:
+    defaults:
+      run:
+        working-directory: ${{ env.WORKSPACE }}
     runs-on: ubuntu-latest
     steps:
       - name: set up
