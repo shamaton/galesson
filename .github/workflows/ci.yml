@@ -9,6 +9,7 @@ on:
 env:
   GOPATH: ${{ github.workspace }}
   WORKSPACE: ${{ github.workspace }}/src/github.com/${{ github.repository }}
+  GO111MODULE: on
 
 jobs:
 
