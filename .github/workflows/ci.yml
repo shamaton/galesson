@@ -30,7 +30,7 @@ jobs:
       - name: check out
         uses: actions/checkout@v2
         with:
-          path: /home/runner/go/src/github.com/${{ github.repository }}
+          path: ${{ github.workspace }}/src/github.com/${{ github.repository }}
 
       - name: Cache
         uses: actions/cache@v2.1.0
