@@ -44,11 +44,9 @@ jobs:
 
       - name: Build
         run: go build -v ./...
-        working-directory: ${{ env.WORKSPACE }}
 
       - name: Test
-        run: go test -v ./...
-        working-directory: ${{ env.WORKSPACE }}
+        run: go test -race --coverprofile=coverage.coverprofile --covermode=atomic ./...
 
       - name: Upload coverage to Codecov
         if: success() && matrix.go == 1.15 && matrix.os == 'ubuntu-latest'
