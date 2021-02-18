@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	v := "hello galesson"
+	v := "hello galesson."
 	b, err := msgpack.Encode(v)
 	if err != nil {
 		log.Fatal(err)
